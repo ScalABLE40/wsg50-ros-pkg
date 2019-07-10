@@ -33,3 +33,12 @@ add_dependencies(wsg_50_sim_keyboard_teleop wsg_50_common_generate_messages_cpp)
 add_executable(wsg_50_sim_driver src/wsg_50_sim_driver.cpp)
 target_link_libraries(wsg_50_sim_driver ${catkin_LIBRARIES})
 add_dependencies(wsg_50_sim_driver wsg_50_common_generate_messages_cpp)
+
+install(DIRECTORY
+   launch controllers urdf meshes
+   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
+install(TARGETS wsg_50_sim_keyboard_teleop wsg_50_sim_driver
+        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
